@@ -1,1 +1,125 @@
-<h1>Login</h1>
+{% extends 'main/base.html' %}
+{% load static %}
+{% block head %}
+{% endblock %}
+{% block title %}Login | OnlyForUs{% endblock %}
+{% block body %}
+    <section class="container">
+        <div class="text-block">
+            <h2>OnlyForUs</h2>
+            <h3>Login</h3>
+            <p>
+                The College Website for Sanskar College of Engineering and Technology, here you can fin
+                solutions for your Tutorials of every subject and also Particaipate in different
+                poll votings going on.
+            </p>
+        </div>
+        <hr>
+        <div class="form-block">
+            <div class="error-message-block">
+                <ul class="error-messages">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <li>{{message}}</li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
+            <form class="registration-form" action="/login/" method="POST"> 
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Username" required>
+          
+               <input type="password" name="password" placeholder="Password" required> 
+               <input type="submit" value="Login" class="register-btn">
+            </form>
+        </div>
+        <p style="font-size: 14px; margin-top: 10px;">Not Registerd yet? <a href="/register/" class="login-btn">Register here</a></p>
+    </section>
+    <br><br><br>
+    <style type="text/css">
+        .container{
+            width: 90%;
+            margin: auto;
+            text-align: center;
+        }
+        .text-block{
+            margin-top: 20px;
+            margin-bottom: 30px;
+            background: rgba(0,0,0,0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .text-block h2{
+            font-size: 36px;
+            color: #8860d0;
+        }
+        .text-block h3{
+            font-size: 26px;
+            color: rgba(0,0,0,0.8);
+        }
+        .text-block p{
+            font-size: 15px;
+        }
+        .form-block{
+            margin-top: 20px;
+        }
+        .registration-form{
+            width: 60%;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        input, select {
+            margin-bottom: 15px;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Poppins';
+            font-size: 15px;
+            outline: none;
+            box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+        }
+        input::placeholder{
+            color: black;
+            opacity: 0.8;
+        }
+        select{
+            background: white;
+        }
+        .register-btn{
+            margin-top: 20px;
+            cursor: pointer;
+            background: #8860d0;
+            color: white;
+        }
+        .error-message-block{
+            width: 60%;
+            margin: auto;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .error-messages{
+            list-style: none;
+        }
+        .error-messages li{
+            border: 1px solid rgba(220,0,0,0.8);
+            color: rgba(220,0,0,0.8);
+            padding: 4px 10px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        .login-btn{
+            text-decoration: none;
+            color: default;
+        }
+        @media(max-width: 600px){
+            .registration-form{
+                width: 95%;
+            }
+            .error-message-block{
+                width: 95%;
+            }
+        }
+    </style>
+{% endblock %}

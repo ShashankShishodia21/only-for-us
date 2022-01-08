@@ -14,9 +14,11 @@
         <div class="about-container">
             
             <div class="text-container">
-                <h1>About us</h1>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi porro rerum cupiditate expedita <br> distinctio nisi nulla ipsum libero molestiae minima Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid,ipsum libero molestiae</p>
-                <a href="">Read More</a>    
+            	<br>
+                <h1>OnlyForUs</h1>
+                <p>A Website for <b> Sanskar College of Engineering and Technology </b>, here you can find solutions for your Tutorials of every subject and also Particaipate in different
+                poll votings going on.</p>
+                <a href="">Solutions</a>    
             </div>
             <div class="image-container">
                 <img src="{% static 'main/images/hero-group.png' %}" alt="My image">
@@ -24,24 +26,26 @@
             
         </div>
         <div class="TutorialAndSem flex">
-            <h1>What we provided </h1>
-            <p> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+            <h1>What we Provide </h1>
+            <p> Solutions and Notes for all of your Tutorials of all the Subjects Semester vise. </p>
             <div class="container flex">
                 <div class="tutorial flex">
                     <img src="{% static 'main/images/notebook.png' %}" alt="My image">
-                    <h1>Tutorial</h1>
+                    <h2>Tutorial</h2>
                     <p>45</p>
                     
                 </div>
                 
                 <div class="semester flex">
                     <img src="{% static 'main/images/semester.png' %}" alt="My image">
-                    <h1>Semester</h1>
+                    <h2>Semester</h2>
                     <p>08</p>
     
                 </div>
             </div>
         </div>
+
+    {% include 'main/footer.html' %}
 
     <style>
         .flex{
@@ -57,6 +61,7 @@
             width: 100%;
             min-height: 50vh;
             padding: 20px;
+            text-align: center;
         }
         .TutorialAndSem h1{
             padding-top: 100px;
@@ -193,6 +198,7 @@
             align-items: flex-start;
             flex-direction: column;
             font-size: 22px;
+            padding: 0px 20px;
         }
         .text-container h1{
             font-size: 70px;
@@ -210,8 +216,8 @@
         }
         .text-container a:hover{
             background-color: transparent;
-            color: black;
-            border: 2px solid rebeccapurple;
+            color: #5680E9;
+            border: 2px solid #5680E9;
         }
         @media screen and (max-width: 1600px){
             .image-container img {
@@ -242,6 +248,7 @@
                 border-radius: 0px;
                 padding: 10px;
                 overflow:hidden;
+                text-align: center;
             }
             .image-container{
                 width: 100%;
@@ -274,6 +281,7 @@
             .about-container{
                 min-height:40vh;
                 padding-top: 50px;
+
             }
             .image-container{
                 width: 100%;

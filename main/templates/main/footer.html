@@ -1,0 +1,54 @@
+<footer>
+	<div class="foot-bar">
+		<div class="left-foot-section">
+			<p class="branding"><b>OnlyForUs</b> (for SCET)</p>
+			<p class="promotion-bar">by <a href="http://stpdnp.atwebpages.com" >STPDNP</a></p>
+		</div>
+		<div class="right-foot-section">
+			<p class="current-user">{{username}}</p>
+			<a href="/logout/" class="logout-btn">Logout</a>
+		</div>
+	</div>
+</footer>
+<style type="text/css">
+	footer{
+		margin-top: 10px;
+		width: 100%;
+		padding: 10px 0px;
+		/*background: rgba(0,0,0,0.5);*/
+	}
+	.foot-bar{
+		border-top: 1px solid rgba(0,0,0,0.2);
+		width: 90%;
+		margin: auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 20px 0px;
+	}
+	.left-foot-section{
+		float: left;
+		text-align: left;
+	}
+	.right-foot-section{
+		float: right;
+		text-align: right;
+	}
+	.branding{
+		font-size: 12px;
+		font-weight: 400;
+	}
+	.branding b{
+		font-weight: 500;
+		font-size: 14px;
+	}
+	.promotion-bar, .current-user{
+		font-size: 14px;
+	}
+	.promotion-bar a, .logout-btn{
+		font-size: 14px;
+		text-decoration: none;
+		font-weight: 500;
+		color: #5680E9;
+	}
+</style>

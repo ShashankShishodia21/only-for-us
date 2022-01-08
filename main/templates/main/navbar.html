@@ -1,7 +1,9 @@
 <nav>
 	<div class="nav-bar">
 		<div class="logo-section">
+			<a href="/home/">
 			<h1 class="nav-logo">OnlyForUs<sup>by STPDNP</sup></h1>
+			</a>
 		</div>
 		<div class="menu-section">
 			<ul class="nav-menu">
@@ -9,6 +11,7 @@
 				<li><a href="" class="nav-item" title="Tutorial Solutions">Solutions</a></li>
 				<li><a href="" class="nav-item" title="Voting Polls">Polls</a></li>
 				<li><a href="" class="nav-item" title="About OnlyForUs">About</a></li>
+				<li><a href="" class="nav-item" title="My Account">Account</a></li>
 			</ul>
 			<a class="nav-opener" onclick="opennav()"><i class="las la-bars"></i></a>
 		</div>
@@ -23,6 +26,10 @@
 	<br>
 	<li><a href="" class="nav-mobile-item" title="About OnlyForUs">About</a></li>
 	<br>
+	<li><a href="" class="nav-mobile-item" title="My Account">My Account</a></li>
+	<br>
+	<li><a href="/logout/" class="nav-mobile-item nav-logout-btn" title="Logout">Logout</a></li>
+	<br>
 	<a class="menu-close-btn" onclick="closenav()"><i class="las la-times-circle"></i></a>
 </ul>
 <style type="text/css">
@@ -31,8 +38,11 @@
 		padding: 10px 0px;
 		background: gray;
 		box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
-		background: #c1c8e4;
+		background: rgba(255,255,255,0.2);
 		z-index: 1000;
+		position: fixed;
+		top: 0;
+		backdrop-filter: blur(10px);
 	}
 	.nav-bar{
 		margin: auto;
@@ -44,9 +54,14 @@
 	.logo-section{
 		width: 100%;
 	}
+	.logo-section a{
+		text-decoration: none;
+	}
 	.nav-logo{
 		font-size: 24px;
 		font-weight: 600;
+		text-decoration: none;
+		color: black;
 	}
 	.nav-logo sup{
 		font-size: 10px;
@@ -67,7 +82,7 @@
 	.nav-item{
 		text-decoration: none;
 		color: black;
-		font-size: 15px;
+		font-size: 16px;
 		font-weight: 400;
 		transition: 0.8s ease-in-out;
 		border-bottom: 1px solid transparent;
@@ -83,7 +98,8 @@
 	.nav-mobile-menu{
 		position: fixed;
 		top: 0px;
-		background: #c1c8e4;
+		background: rgba(255,255,255,0.4);
+		backdrop-filter: blur(15px);
 		list-style: none;
 		width: 100%;
 		text-align: center;
@@ -100,7 +116,7 @@
 	}
 	@keyframes nav-open-animation{
 		0%{
-			transform: translateY(-100px);
+			transform: translateY(-200px);
 		}
 		100%{
 			transform: translateY(0px);
@@ -111,6 +127,9 @@
 		color: black;
 		font-size: 14px;
 	}
+	.nav-logout-btn{
+		color: rgb(200,0,0);
+	}
 	.menu-close-btn{
 		font-size: 24px;
 		margin: 20px;
@@ -120,6 +139,11 @@
 		display: none;
 		float: right;
 		font-size: 20px;
+	}
+	@media(max-width: 750px){
+		.nav-item{
+			font-size: 14px;
+		}
 	}
 	@media(max-width: 550px){
 		.nav-menu{
