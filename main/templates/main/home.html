@@ -23,8 +23,141 @@
             </div>
             
         </div>
+        <div class="TutorialAndSem flex">
+            <h1>What we provided </h1>
+            <p> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+            <div class="container flex">
+                <div class="tutorial flex">
+                    <img src="{% static 'main/images/notebook.png' %}" alt="My image">
+                    <h1>Tutorial</h1>
+                    <p>45</p>
+                    
+                </div>
+                
+                <div class="semester flex">
+                    <img src="{% static 'main/images/semester.png' %}" alt="My image">
+                    <h1>Semester</h1>
+                    <p>08</p>
+    
+                </div>
+            </div>
+        </div>
 
     <style>
+        .flex{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            width: 100%;
+        }
+        .TutorialAndSem{
+            flex-direction: column;
+            width: 100%;
+            min-height: 50vh;
+            padding: 20px;
+        }
+        .TutorialAndSem h1{
+            padding-top: 100px;
+            padding-bottom: 20px;
+            font-size: 50px;
+
+        }
+        .TutorialAndSem p{
+            padding-top: 20px;
+            padding-bottom: 40px;
+            font-size: 30px;
+        }
+        .semester ,.tutorial{
+            flex-direction: column;
+        }
+        .semester{
+            flex: 1;
+        }
+        .tutorial{
+            flex: 1;
+        }
+        .tutorial img,.semester img{
+            width: 20%;
+            height: auto;
+            object-fit: cover;
+        }
+        .tutorial h1 ,.semester h1{
+            font-size: 50px;
+            font-weight: 600;
+            padding-top: 20px;
+        }
+        .tutorial p ,.semester p{
+            font-size: 40px;
+            font-weight: 800;
+            padding: 0px;
+        }
+        @media screen and (max-width: 1400px) {
+            .tutorial h1 ,.semester h1{
+                font-size: 40px;
+            }
+            .tutorial p ,.semester p{
+                font-size: 25px;
+            }
+            .TutorialAndSem h1{
+                font-size: 40px;
+    
+            }
+            .TutorialAndSem p{
+                font-size: 20px;
+            }
+
+        }
+        @media screen and (max-width: 850px) {
+            .TutorialAndSem h1{
+                font-size: 30px;
+                padding-top: 20px;
+                padding-bottom: 20px;
+    
+            }
+            .tutorial h1 ,.semester h1{
+                font-size: 30px;
+                padding-top: 0px;
+                padding-bottom: 0px;
+            }
+            .tutorial p ,.semester p{
+                font-size: 25px;
+                padding-top: 0px;
+                padding-bottom: 0px;
+            }
+            .TutorialAndSem p{
+                font-size: 20px;
+            }
+
+        }
+        @media screen and (max-width: 500px) {
+            .container{
+                flex-direction: column;
+            }
+            .TutorialAndSem h1{
+                font-size: 25px;
+                padding-top: 20px;
+                padding-bottom: 20px;
+    
+            }
+            .tutorial h1 ,.semester h1{
+                font-size: 30px;
+                padding:0px 0px ;
+              
+            }
+            .tutorial{
+                margin: 25px 0px;
+            }
+            .tutorial p ,.semester p{
+                font-size: 25px;
+                padding-top: 0px;
+            }
+            .TutorialAndSem p{
+                font-size: 18px;
+            }
+
+        }
         .about-container{
             width: 100%;
             min-height: 60vh;
@@ -36,6 +169,7 @@
             border-radius: 0px 0px 300px 0px ;
             overflow: hidden;
             color: #5680E9;
+            
         }
         .image-container{
             flex: 1;
