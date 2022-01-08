@@ -1,1 +1,38 @@
-<h1>Regiser</h1>
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block title %}Register | OnlyForUs{% endblock %}
+
+{% block body %}
+    
+    <section class="container">
+        <div class="text-block">
+            <h2>OnlyForUs</h2>
+            <h3>Register</h3>
+            <p>
+                The College Website for Sanskar College of Engineering and Technology, here you can fin
+                solutions for your Tutorials of every subject and also Particaipate in different
+                poll votings going on.
+            </p>
+        </div>
+        <div class="form-block">
+            <form class="registration-form">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="text" name="fullname" placeholder="Fullname" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="text" name="admission_id" placeholder="Addmission Number" required>
+                <select>
+                    
+                </select>
+
+            </form>
+            
+        </div>
+    </section>
+       
+{% endblock %}
