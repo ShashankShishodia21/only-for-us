@@ -1,0 +1,155 @@
+<nav>
+	<div class="nav-bar">
+		<div class="logo-section">
+			<h1 class="nav-logo">OnlyForUs<sup>by STPDNP</sup></h1>
+		</div>
+		<div class="menu-section">
+			<ul class="nav-menu">
+				<li><a href="/home/" class="nav-item" title="Home">Home</a></li>
+				<li><a href="" class="nav-item" title="Tutorial Solutions">Solutions</a></li>
+				<li><a href="" class="nav-item" title="Voting Polls">Polls</a></li>
+				<li><a href="" class="nav-item" title="About OnlyForUs">About</a></li>
+			</ul>
+			<a class="nav-opener" onclick="opennav()"><i class="las la-bars"></i></a>
+		</div>
+	</div>
+</nav>
+<ul class="nav-mobile-menu" id="mobile-nav">
+	<li><a href="/home/" class="nav-mobile-item" title="Home">Home</a></li>
+	<br>
+	<li><a href="" class="nav-mobile-item" title="Tutorial Solutions">Solutions</a></li>
+	<br>
+	<li><a href="" class="nav-mobile-item" title="Voting Polls">Polls</a></li>
+	<br>
+	<li><a href="" class="nav-mobile-item" title="About OnlyForUs">About</a></li>
+	<br>
+	<a class="menu-close-btn" onclick="closenav()"><i class="las la-times-circle"></i></a>
+</ul>
+<style type="text/css">
+	nav{
+		width: 100%;
+		padding: 10px 0px;
+		background: gray;
+		box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+		background: #c1c8e4;
+		z-index: 1000;
+	}
+	.nav-bar{
+		margin: auto;
+		width: 90%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.logo-section{
+		width: 100%;
+	}
+	.nav-logo{
+		font-size: 24px;
+		font-weight: 600;
+	}
+	.nav-logo sup{
+		font-size: 10px;
+		font-weight: 500;
+		margin-left: 4px;
+		color: rgba(0,0,0,0.8);
+	}
+	.menu-section{
+		width: 100%;
+	}
+	.nav-menu{
+		width: 100%;
+		display: flex;
+		list-style: none;
+		align-items: center;
+		justify-content: space-around;
+	}
+	.nav-item{
+		text-decoration: none;
+		color: black;
+		font-size: 15px;
+		font-weight: 400;
+		transition: 0.8s ease-in-out;
+		border-bottom: 1px solid transparent;
+		border-top: 1px solid transparent;
+
+	}
+	.nav-item:hover{
+		border-bottom: 1px solid rgba(0,0,0,0.6);
+		border-top: 1px solid rgba(0,0,0,0.6);
+	}
+
+	/*Mobile-navbar-styling*/
+	.nav-mobile-menu{
+		position: fixed;
+		top: 0px;
+		background: #c1c8e4;
+		list-style: none;
+		width: 100%;
+		text-align: center;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		border-bottom-left-radius: 15px;
+		border-bottom-right-radius: 15px;
+		box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+		display: none;
+		transition: 0.4s ease-in-out;
+		animation: nav-open-animation 0.4s ease-in-out;
+		z-index: 1100;
+
+	}
+	@keyframes nav-open-animation{
+		0%{
+			transform: translateY(-100px);
+		}
+		100%{
+			transform: translateY(0px);
+		}
+	}
+	.nav-mobile-item{
+		text-decoration: none;
+		color: black;
+		font-size: 14px;
+	}
+	.menu-close-btn{
+		font-size: 24px;
+		margin: 20px;
+		color: black;
+	}
+	.nav-opener{
+		display: none;
+		float: right;
+		font-size: 20px;
+	}
+	@media(max-width: 550px){
+		.nav-menu{
+			display: none;
+		}
+		.logo-section{
+
+		}
+		.nav-logo{
+			font-size: 18px;
+		}
+		.nav-logo sup{
+			font-size: 8px;
+		}
+		.nav-opener{
+			display: flex;
+		}
+	}
+</style>
+
+<script type="text/javascript">
+
+	var mobilenav = document.getElementById('mobile-nav');
+
+	function closenav(){
+		mobilenav.style.display = "none";
+	}
+	function opennav(){
+		mobilenav.style.display = "block";
+	}
+</script>
+
+
