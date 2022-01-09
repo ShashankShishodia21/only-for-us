@@ -15,10 +15,10 @@
         <h1>Select Semester</h1>
 
         <!-- code goes here -->
-        <div class="semster-block flex">
+        <div class="semester-block flex">
             <ul class="semester-list flex">
                 {% for sem in semesters %}
-                    <li><a href="" >Semester {{sem}}</a></li>
+                    <li><a href="" title="B.Tech Semester {{sem}}">Semester {{sem}}</a></li>
                 {% endfor %}
             </ul>
         </div>
@@ -45,21 +45,22 @@
             margin-top: 60px;
             justify-content: flex-start;
             flex-direction: column;
+            margin-bottom: 40px;
          }
          .container h1{
              padding: 20px 0px;
          }
-         .semster-block{
+         .semester-block{
              width: 80%;
          }
-         .semster-block ul{
+         .semester-block ul{
              width: 100%;
              flex-direction: column;
              list-style: none;
          }
-         .semster-block ul li a{
+         .semester-block ul li a{
             background-color: #5680E9;
-            padding: 20px;
+            padding: 18px;
             font-size: 20px;
             width: 500px;
             display: flex;
@@ -69,10 +70,16 @@
             border-radius: 10px;
             color: white;
             text-decoration: none;
-            box-shadow: 15px 15px 15px rgba(0,0,0,0.178);
+            box-shadow: 12px 12px 10px rgba(0,0,0,0.178);
+            transition: 0.3s ease-in-out;
+            border: 2px solid #5680E9;
+        }
+        .semester-block ul li a:hover{
+            box-shadow: none;
+            transform: scale(1.04);
         }
         @media screen and (max-width: 600px) {
-         .semster-block ul li a{
+         .semester-block ul li a{
              width: 300px;
              padding: 10px;
          }
