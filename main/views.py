@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from .models import Students, Semester, AdminData, Subjects, Course, Tutorials, PollSubmitted, Polls, ContactQueries
 from django.contrib import messages
 from datetime import datetime
 from django.contrib.auth.hashers import make_password, check_password
 
 def index(request):
-	return "index page"
+	return HttpResponse("Hello world")
 
 def home(request):
 	if request.session.has_key('username'):
@@ -19,6 +20,21 @@ def home(request):
 
 def about(request):
 	return render(request, 'main/about.html')
+
+def semesters(request):
+	if request.session.has_key('username'):
+		username = request.session['username']
+
+		all_semesters = Semester.objects.all()
+
+		data = {
+			'username' : username,
+			'semesters': all_semesters,
+		}
+
+		return render(request, 'main/semesters.html', data)
+	else:
+		return redirect('/login/')
 
 def login(request):
 	if request.session.has_key('username'):
@@ -62,6 +78,7 @@ def register(request):
 		course = request.POST['course']
 		admission_id= request.POST['admission_id']
 		password = request.POST['password']
+		course_year = request.POST['course_year']
 
 		data = {
 			'username' : username,
@@ -128,6 +145,7 @@ def register(request):
 									admission_no=admission_id,
 									password=encrypted_password,
 									datetime=datetime.now(),
+									course_year=course_year,
 									)
 		registering_user.save()
 		print("user registered!!")
