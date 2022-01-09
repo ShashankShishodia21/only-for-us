@@ -9,7 +9,6 @@ class Students(models.Model):
 	admission_no = models.CharField(max_length=20, unique=True)
 	course = models.CharField(max_length=255)
 	datetime = models.DateTimeField()
-	special_token = models.CharField(max_length=255, unique=True)
 	password = models.CharField(max_length=255)
 	course_year = models.CharField(max_length=255)
 
@@ -23,7 +22,6 @@ class AdminData(models.Model):
 	admission_no = models.CharField(max_length=20, blank=True)
 	gender = models.CharField(max_length=10, default="Male")
 	datetime = models.DateTimeField()
-	special_token = models.CharField(max_length=255, unique=True)
 	password = models.CharField(max_length=255)
 	rights = models.CharField(max_length=255)
 	profession = models.CharField(max_length=255)

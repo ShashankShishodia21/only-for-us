@@ -5,16 +5,23 @@
 
 {% endblock %}
 
-{% block title %}About us | OnlyForUs{% endblock %}
+{% block title %}Select Semester | OnlyForUs{% endblock %}
 
 {% block body %}
     {% include 'main/navbar.html' %}
     
     <section class="container">
         <br><br>
-        <h1>About us</h1>
+        <h1>Select Semester</h1>
 
         <!-- code goes here -->
+        <div class="semster-block">
+            <ul class="semester-list">
+                {% for sem in semesters %}
+                    <li><a href="" >{{sem}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
         
     </section>
 
