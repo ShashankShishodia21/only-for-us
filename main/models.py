@@ -74,6 +74,7 @@ class Polls(models.Model):
 	submitted = models.CharField(max_length=500)
 	leading_option = models.CharField(max_length=500, blank=True)
 	datetime = models.DateTimeField()
+	end_datetime = models.DateTimeField()
 	author = models.CharField(max_length=255) # from admin data model
 
 	def __str__(self):

@@ -11,15 +11,39 @@ def index(request):
 def home(request):
 	if request.session.has_key('username'):
 		username = request.session['username']
+		no_of_semesters = len(Semester.objects.all()) + 1
+		no_of_tutorials = len(Tutorials.objects.all())
 		data = {
-			'username': username
+			'username': username,
+			'no_of_tutorials': no_of_tutorials,
+			'no_of_semesters': no_of_semesters
 		}
 		return render(request, 'main/home.html', data)
 	else:
 		return redirect('/login/')
 
+def my_account(request):
+	if request.session.has_key('username'):
+		username = request.session['username']
+
+		student_details = Students.objects.get(username=username)
+		data = {
+			'username': username,
+			'student': student_details,
+		}
+		return render(request, 'main/account.html', data)
+	else:
+		return redirect('/login/')
+
 def about(request):
-	return render(request, 'main/about.html')
+	if request.session.has_key('username'):
+		username = request.session['username']
+		data = {
+			'username': username
+		}
+		return render(request, 'main/about.html', data)
+	else:
+		return redirect('/login/')
 
 def semesters(request):
 	if request.session.has_key('username'):

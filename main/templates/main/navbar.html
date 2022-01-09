@@ -1,3 +1,4 @@
+{% load static %}
 <nav>
 	<div class="nav-bar">
 		<div class="logo-section">
@@ -11,7 +12,7 @@
 				<li><a href="/choose-semester/" class="nav-item" title="Tutorial Solutions">Solutions</a></li>
 				<li><a href="" class="nav-item" title="Voting Polls">Polls</a></li>
 				<li><a href="/about/" class="nav-item" title="About OnlyForUs">About</a></li>
-				<li><a href="" class="nav-item" title="My Account">Account</a></li>
+				<li><a href="/my-account/" class="nav-item" title="My Account">Account</a></li>
 			</ul>
 			<a class="nav-opener" onclick="opennav()"><i class="las la-bars"></i></a>
 		</div>
@@ -26,7 +27,7 @@
 	<br>
 	<li><a href="/about/" class="nav-mobile-item" title="About OnlyForUs">About</a></li>
 	<br>
-	<li><a href="" class="nav-mobile-item" title="My Account">My Account</a></li>
+	<li><a href="/my-account/" class="nav-mobile-item" title="My Account">My Account</a></li>
 	<br>
 	<li><a href="/logout/" class="nav-mobile-item nav-logout-btn" title="Logout">Logout</a></li>
 	<br>
@@ -176,4 +177,50 @@
 	}
 </script>
 
-
+<div class="preloader">
+	<img src="{% static 'main/images/preloader.png' %}" alt="preloader">
+	<br>
+	<b>OnlyForUs <span>(by STPDNP)</span></b>
+</div>
+<style type="text/css">
+	.preloader{
+		width: 100%;
+		height: 100vh;
+		background: rgba(255,255,255,.98);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		position: fixed;
+		top: 0;
+		z-index: 1000;
+	}
+	.preloader img{
+		width: 150px;
+		animation: preloader-rotator 2s linear infinite;
+	}
+	.preloader b{
+		color: #8860D0;
+		font-size: 14px;
+	}
+	.preloader b span{
+		font-weight: 600;
+		color: black;
+		font-size: 13px;
+	}
+	@keyframes preloader-rotator{
+		from{
+		transform: rotate(0deg);
+		}
+		to{
+			transform: rotate(360deg);
+		}
+	}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+<script>
+  $(window).load(function () {
+      $(".preloader").fadeOut("slow");
+  });
+</script>

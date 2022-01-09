@@ -19,7 +19,7 @@
         <p>A Website for <b> Sanskar College of Engineering and Technology </b>, here you can find solutions for your
             Tutorials of every subject and also Particaipate in different
             poll votings going on.</p>
-        <a href="">Solutions</a>
+        <a href="/choose-semester/">Solutions</a>
     </div>
     <div class="image-container">
         <img src="{% static 'main/images/hero-group.png' %}" alt="My image">
@@ -33,14 +33,14 @@
         <div class="tutorial flex">
             <img src="{% static 'main/images/notebook.png' %}" alt="My image">
             <h2>Tutorial</h2>
-            <p>45</p>
+            <p>{{no_of_tutorials}}</p>
 
         </div>
 
         <div class="semester flex">
             <img src="{% static 'main/images/semester.png' %}" alt="My image">
-            <h2>Semester</h2>
-            <p>08</p>
+            <h2>Semesters</h2>
+            <p>{{no_of_semesters}}</p>
 
         </div>
     </div>

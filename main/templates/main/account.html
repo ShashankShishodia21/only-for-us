@@ -1,0 +1,103 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block title %}My Account | OnlyForUs{% endblock %}
+
+{% block body %}
+    {% include 'main/navbar.html' %}
+    
+    <section class="container flex ">
+        <br>
+        <h1>My Account</h1>
+        <br>
+        <!-- code goes here -->
+        <div class="student-detail-box">
+            <div class="header-text">Username</div>
+            <div class="detail-text">{{student.username}}</div>
+
+            <div class="header-text">Fullname</div>
+            <div class="detail-text">{{student.fullname}}</div>
+
+            <div class="header-text">Email</div>
+            <div class="detail-text">{{student.email}}</div>
+
+            <div class="header-text">Gender</div>
+            <div class="detail-text">{{student.gender}}</div>
+
+            <div class="header-text">Course</div>
+            <div class="detail-text">{{student.course}}</div>
+
+            {% if student.course_year != "" %}
+            <div class="header-text">Year</div>
+            <div class="detail-text">{{student.course_year}}</div>
+            {% endif %}
+
+            <div class="header-text">Admission Number</div>
+            <div class="detail-text">{{student.admission_no}}</div>
+
+            <div class="header-text">Date Joined</div>
+            <div class="detail-text">{{student.datetime}}</div>
+
+        </div>
+        
+    </section>
+
+
+     {% include 'main/footer.html' %}
+
+     <style type="text/css">
+         body{
+            background-color: #DCE0F5;
+
+         }
+         .container{
+            min-height: 100vh;
+            width: 90%;
+            margin: auto;
+            margin-top: 60px;
+         }
+         .student-detail-box{
+            margin-top: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(136, 96, 208,0.5); 
+         }
+         .header-text{
+            font-size: 18px;
+            font-weight: 500;
+            color: white;
+            border-radius: 5px;
+            padding: 5px 10px;
+            background: #8860D0;
+            margin-bottom: 4px;
+         }
+         .detail-text{
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: black;
+            border-radius: 5px;
+            padding: 5px 10px;
+            background: #DCE0F5;
+         }
+         @media(max-width: 450px){
+            .flex h1{
+                text-align: center;
+            }
+            .student-detail-box{
+                padding: 10px;
+            }
+            .header-text{
+                font-size: 16px;
+            }
+            .detail-text{
+                font-size: 14px;
+            }
+         }
+         
+     </style>
+       
+{% endblock %}
