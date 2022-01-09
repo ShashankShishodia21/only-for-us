@@ -10,11 +10,19 @@
 {% block body %}
     {% include 'main/navbar.html' %}
     
-    <section class="container">
+    <section class="container flex">
         <br><br>
         <h1>About us</h1>
 
-        <!-- code goes here -->
+        <div class="about_container flex">
+            <div class="left flex">
+                <img src="{% static 'main/images/cover-space.jpg' %}" alt="My image">
+                
+            </div>
+            <div class="right flex">
+                <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, a porro! Quaerat enim doloremque similique? Ipsam voluptatum, ab eaque amet, iste aspernatur vero magni accusamus, ratione nostrum suscipit quaerat? Sapiente.</h1>
+            </div>
+        </div>
         
     </section>
 
@@ -22,11 +30,86 @@
      {% include 'main/footer.html' %}
 
      <style type="text/css">
+         .flex{
+             display: flex;
+             justify-content: center;
+             align-items: center;
+         }
          .container{
             min-height: 100vh;
             width: 90%;
             margin: auto;
             padding-top: 30px;
+            flex-direction: column;
+         }
+         .container h1{
+             font-size: 50px;
+             padding-top: 30px;
+         }
+         .about_container{
+             width: 100%;
+         }
+         .about_container .left img{
+             width: 100%;
+             height: auto;
+             object-fit: cover;
+
+         }
+         .about_container .right h1{
+             font-size: 35px;
+             padding: 0px 20px;
+
+         }
+         @media screen and (max-width: 1500px) {
+            .about_container .right h1{
+                font-size: 28px;
+   
+            }
+         }
+         @media screen and (max-width: 1400px) {
+            .about_container .right h1{
+                font-size: 25px;
+            }
+            .container{
+                min-height: 90vh;
+                width: 100%;
+                padding: 20px;
+            }
+
+         }
+         @media screen and (max-width: 1000px) {
+            .about_container{
+                flex-direction: column;
+            }
+            .about_container .left img{
+                width: 80%;
+            }
+
+
+         }
+         @media screen and (max-width: 600px) {
+            
+            .about_container .right h1{
+                font-size: 22px;
+            }
+            .container h1{
+                font-size: 40px;
+                padding: 0px;
+            }
+
+         }
+         @media screen and (max-width: 400px) {
+            
+            .about_container .right h1{
+                font-size: 18px;
+            }
+            .container {
+                padding: 10px;
+            }
+            .right{
+                text-align: center;
+            }
+
          }
      </style>
        

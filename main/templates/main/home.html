@@ -8,287 +8,331 @@
 {% block title %}Home | OnlyForUs{% endblock %}
 
 {% block body %}
-    {% include 'main/navbar.html' %}
-  
+{% include 'main/navbar.html' %}
 
-        <div class="about-container">
-            
-            <div class="text-container">
-            	<br>
-                <h1>OnlyForUs</h1>
-                <p>A Website for <b> Sanskar College of Engineering and Technology </b>, here you can find solutions for your Tutorials of every subject and also Particaipate in different
-                poll votings going on.</p>
-                <a href="">Solutions</a>    
-            </div>
-            <div class="image-container">
-                <img src="{% static 'main/images/hero-group.png' %}" alt="My image">
-            </div>
-            
-        </div>
-        <div class="TutorialAndSem flex">
-            <h1>What we Provide </h1>
-            <p> Solutions and Notes for all of your Tutorials of all the Subjects Semester vise. </p>
-            <div class="container flex">
-                <div class="tutorial flex">
-                    <img src="{% static 'main/images/notebook.png' %}" alt="My image">
-                    <h2>Tutorial</h2>
-                    <p>45</p>
-                    
-                </div>
-                
-                <div class="semester flex">
-                    <img src="{% static 'main/images/semester.png' %}" alt="My image">
-                    <h2>Semester</h2>
-                    <p>08</p>
-    
-                </div>
-            </div>
+
+<div class="about-container">
+
+    <div class="text-container">
+        <br>
+        <h1>OnlyForUs</h1>
+        <p>A Website for <b> Sanskar College of Engineering and Technology </b>, here you can find solutions for your
+            Tutorials of every subject and also Particaipate in different
+            poll votings going on.</p>
+        <a href="">Solutions</a>
+    </div>
+    <div class="image-container">
+        <img src="{% static 'main/images/hero-group.png' %}" alt="My image">
+    </div>
+
+</div>
+<div class="TutorialAndSem flex">
+    <h1>What we Provide </h1>
+    <p> Solutions and Notes for all of your Tutorials of all the Subjects Semester vise. </p>
+    <div class="container flex">
+        <div class="tutorial flex">
+            <img src="{% static 'main/images/notebook.png' %}" alt="My image">
+            <h2>Tutorial</h2>
+            <p>45</p>
+
         </div>
 
-    {% include 'main/footer.html' %}
+        <div class="semester flex">
+            <img src="{% static 'main/images/semester.png' %}" alt="My image">
+            <h2>Semester</h2>
+            <p>08</p>
 
-    <style>
-        .flex{
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        </div>
+    </div>
+</div>
+
+{% include 'main/footer.html' %}
+
+<style>
+    .flex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .TutorialAndSem {
+        flex-direction: column;
+        width: 100%;
+        min-height: 50vh;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .TutorialAndSem h1 {
+        padding-top: 100px;
+        padding-bottom: 20px;
+        font-size: 50px;
+
+    }
+
+    .TutorialAndSem p {
+        padding-top: 20px;
+        padding-bottom: 40px;
+        font-size: 30px;
+    }
+
+    .semester,
+    .tutorial {
+        flex-direction: column;
+    }
+
+    .semester {
+        flex: 1;
+    }
+
+    .tutorial {
+        flex: 1;
+    }
+
+    .tutorial img,
+    .semester img {
+        width: 20%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .tutorial h1,
+    .semester h1 {
+        font-size: 50px;
+        font-weight: 600;
+        padding-top: 20px;
+    }
+
+    .tutorial p,
+    .semester p {
+        font-size: 40px;
+        font-weight: 800;
+        padding: 0px;
+    }
+
+    @media screen and (max-width: 1400px) {
+
+        .tutorial h1,
+        .semester h1 {
+            font-size: 40px;
         }
-        .container{
-            width: 100%;
+
+        .tutorial p,
+        .semester p {
+            font-size: 25px;
         }
-        .TutorialAndSem{
+
+        .TutorialAndSem h1 {
+            font-size: 40px;
+
+        }
+
+        .TutorialAndSem p {
+            font-size: 20px;
+        }
+
+    }
+
+    @media screen and (max-width: 850px) {
+        .TutorialAndSem h1 {
+            font-size: 30px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+
+        }
+
+        .tutorial h1,
+        .semester h1 {
+            font-size: 30px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+
+        .tutorial p,
+        .semester p {
+            font-size: 25px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+
+        .TutorialAndSem p {
+            font-size: 20px;
+        }
+
+    }
+
+    @media screen and (max-width: 500px) {
+        .container {
             flex-direction: column;
-            width: 100%;
-            min-height: 50vh;
-            padding: 20px;
+        }
+
+        .TutorialAndSem h1 {
+            font-size: 25px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+
+        }
+
+        .tutorial h1,
+        .semester h1 {
+            font-size: 30px;
+            padding: 0px 0px;
+
+        }
+
+        .tutorial {
+            margin: 25px 0px;
+        }
+
+        .tutorial p,
+        .semester p {
+            font-size: 25px;
+            padding-top: 0px;
+        }
+
+        .TutorialAndSem p {
+            font-size: 18px;
+        }
+
+    }
+
+    .about-container {
+        width: 100%;
+        min-height: 60vh;
+        background-color: #DCE0F5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 60px;
+        border-radius: 0px 0px 300px 0px;
+        overflow: hidden;
+        color: #5680E9;
+    }
+
+    .image-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .image-container img {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        margin: 200px 20px 20px 20px;
+        border-radius: 10px;
+    }
+
+    .text-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        font-size: 22px;
+        padding: 0px 20px;
+    }
+
+    .text-container h1 {
+        font-size: 70px;
+        padding: 20px 0px;
+    }
+
+    .text-container a {
+        text-decoration: none;
+        padding: 12px;
+        margin: 50px 0px;
+        background-color: #5680E9;
+        border: 2px solid transparent;
+        color: white;
+        border-radius: 5px;
+        transition: .3s all ease;
+    }
+
+    .text-container a:hover {
+        background-color: transparent;
+        color: #5680E9;
+        border: 2px solid #5680E9;
+    }
+
+    @media screen and (max-width: 1600px) {
+        .image-container img {
+            margin: 200px 20px 20px 20px;
+        }
+
+        .about-container {
+            min-height: 40vh;
+        }
+    }
+
+    @media screen and (max-width: 1370px) {
+        .text-container h1 {
+            font-size: 50px;
+
+        }
+
+        .about-container p {
+            font-size: 18px;
+        }
+
+        .text-container a {
+            padding: 10px;
+            font-size: 18px;
+        }
+
+    }
+
+    @media screen and (max-width: 1100px) {
+        .about-container {
+            flex-direction: column;
+            min-height: 80vh;
+            border-radius: 0px;
+            padding: 10px;
+            overflow: hidden;
             text-align: center;
         }
-        .TutorialAndSem h1{
-            padding-top: 100px;
-            padding-bottom: 20px;
-            font-size: 50px;
 
-        }
-        .TutorialAndSem p{
-            padding-top: 20px;
-            padding-bottom: 40px;
-            font-size: 30px;
-        }
-        .semester ,.tutorial{
-            flex-direction: column;
-        }
-        .semester{
-            flex: 1;
-        }
-        .tutorial{
-            flex: 1;
-        }
-        .tutorial img,.semester img{
-            width: 20%;
-            height: auto;
-            object-fit: cover;
-        }
-        .tutorial h1 ,.semester h1{
-            font-size: 50px;
-            font-weight: 600;
-            padding-top: 20px;
-        }
-        .tutorial p ,.semester p{
-            font-size: 40px;
-            font-weight: 800;
-            padding: 0px;
-        }
-        @media screen and (max-width: 1400px) {
-            .tutorial h1 ,.semester h1{
-                font-size: 40px;
-            }
-            .tutorial p ,.semester p{
-                font-size: 25px;
-            }
-            .TutorialAndSem h1{
-                font-size: 40px;
-    
-            }
-            .TutorialAndSem p{
-                font-size: 20px;
-            }
-
-        }
-        @media screen and (max-width: 850px) {
-            .TutorialAndSem h1{
-                font-size: 30px;
-                padding-top: 20px;
-                padding-bottom: 20px;
-    
-            }
-            .tutorial h1 ,.semester h1{
-                font-size: 30px;
-                padding-top: 0px;
-                padding-bottom: 0px;
-            }
-            .tutorial p ,.semester p{
-                font-size: 25px;
-                padding-top: 0px;
-                padding-bottom: 0px;
-            }
-            .TutorialAndSem p{
-                font-size: 20px;
-            }
-
-        }
-        @media screen and (max-width: 500px) {
-            .container{
-                flex-direction: column;
-            }
-            .TutorialAndSem h1{
-                font-size: 25px;
-                padding-top: 20px;
-                padding-bottom: 20px;
-    
-            }
-            .tutorial h1 ,.semester h1{
-                font-size: 30px;
-                padding:0px 0px ;
-              
-            }
-            .tutorial{
-                margin: 25px 0px;
-            }
-            .tutorial p ,.semester p{
-                font-size: 25px;
-                padding-top: 0px;
-            }
-            .TutorialAndSem p{
-                font-size: 18px;
-            }
-
-        }
-        .about-container{
+        .image-container {
             width: 100%;
-            min-height: 60vh;
-            background-color: #DCE0F5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px 60px;
-            border-radius: 0px 0px 300px 0px ;
-            overflow: hidden;
-            color: #5680E9;
-            
-        }
-        .image-container{
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-        .image-container img {
-            position: absolute;
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            margin: 200px 20px 20px 20px;
+            z-index: 678;
+            align-items: flex-end;
             border-radius: 10px;
         }
-        .text-container{
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            flex-direction: column;
-            font-size: 22px;
-            padding: 0px 20px;
+        .image-container img {
+            position: relative;
+            margin: 0px;
+            width: 100%;
         }
-        .text-container h1{
-            font-size: 70px;
-            padding: 20px 0px;
+        .text-container {
+            align-items: center;
         }
-        .text-container a{
-            text-decoration: none;
-            padding: 12px;
-            margin: 50px 0px;
-            background-color: #5680E9;
-            border: 2px solid transparent;
-            color: white;
-            border-radius: 5px;
-            transition: .3s all ease;
+    }
+
+    @media screen and (max-width: 650px) {
+        .about-container {
+            min-height: 50vh;
         }
-        .text-container a:hover{
-            background-color: transparent;
-            color: #5680E9;
-            border: 2px solid #5680E9;
+        .image-container {
+            width: 100%;
+            padding-bottom: 100px;
         }
-        @media screen and (max-width: 1600px){
-            .image-container img {
-                margin: 200px 20px 20px 20px;
-            }
-            .about-container{
-                min-height: 40vh;
-            }
+    }
+
+    @media screen and (max-width: 500px) {
+        .about-container {
+            min-height: 40vh;
+            padding-top: 50px;
         }
-        @media screen and (max-width: 1370px){
-            .text-container h1{
-                font-size: 50px;
-                
-            }
-            .about-container p{
-                font-size: 18px;
-            }
-            .text-container a{
-                padding: 10px;
-                font-size: 18px;
-            }
-
+        .image-container {
+            width: 100%;
         }
-        @media screen and (max-width: 1100px){
-            .about-container{
-                flex-direction: column;
-                min-height:80vh;
-                border-radius: 0px;
-                padding: 10px;
-                overflow:hidden;
-                text-align: center;
-            }
-            .image-container{
-                width: 100%;
-                z-index: 678;
-                align-items: flex-end;
-                border-radius: 10px;
-            }
-            .image-container img{
-                position: relative;
-                margin: 0px;
-                width: 100%;
-
-            }
-            .text-container {
-                align-items: center;
-            }
-        }
-        @media screen and (max-width: 650px){
-            .about-container{
-                min-height:50vh;
-            }
-            .image-container{
-                width: 100%;
-              padding-bottom: 100px;
-            }
-
-
-        }   
-        @media screen and (max-width: 500px){
-            .about-container{
-                min-height:40vh;
-                padding-top: 50px;
-
-            }
-            .image-container{
-                width: 100%;
-            }
-
-
-        }   
-        
-    </style>
+    }
+</style>
 {% endblock %}
