@@ -60,6 +60,33 @@ def semesters(request):
 	else:
 		return redirect('/login/')
 
+def subjects(request, semester):
+	if request.session.has_key('username'):
+		username = request.session['username']
+		semester_instance = Semester.objects.get(semester_number=semester)
+		subjects = Subjects.objects.filter(semester=semester_instance).all()
+		data = {
+			'username': username,
+			'subjects': subjects,
+		}
+		return render(request, 'main/subjects.html', data)
+	else:
+		return redirect('/login/')
+
+def tutorials(request, subject):
+	if request.session.has_key('username'):
+		username = request.session['username']
+		subject_instance = Subjects.objects.get(subject_code=subject)
+		all_tutorials = Tutorials.objects.filter(subject=subject_instance).all()
+		data = {
+			'username': username,
+			'tutorials': all_tutorials,
+		}
+		return render(request, 'main/tutorials.html', data)
+	else:
+		return redirect('/login/')
+
+
 def login(request):
 	if request.session.has_key('username'):
 		return redirect('/home/')

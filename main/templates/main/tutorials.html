@@ -1,0 +1,69 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block head %}
+{% endblock %}
+{% block title %}Tutorials | OnlyForUs{% endblock %}
+{% block body %}
+    {% include 'main/navbar.html' %}
+    <section class="container">
+        <h1>Tutorials</h1>
+        <!-- code goes here -->
+        <div class="subjects-list-box">
+            <ul class="subject-list">
+                {% for tut in tutorials %}
+                <li><a href="" class="subject-list-item" title="Subject Code: {{sub.subject_code}}">{{tut.tutorial_number}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </section>
+     {% include 'main/footer.html' %}
+     <style type="text/css">
+         body{
+            background-color: #DCE0F5;
+         }
+         .container{
+            min-height: 100vh;
+            width: 90%;
+            margin: auto;
+            margin-top: 80px;
+            margin-bottom: 40px;
+         }
+         .subjects-list-box{
+            margin: 20px 0px;
+         }
+         .subject-list{
+            list-style: none;
+         }
+         .subject-list li{
+         }
+         .subject-list-item{
+            color: white;
+            width: 100%;
+            display: block;
+            text-decoration: none;
+            margin-bottom: 18px;
+            padding: 10px 20px;
+            background: #8860D0;
+            border-radius: 5px;
+            font-size: 18px;
+            box-shadow: 10px 10px 10px rgba(0,0,0,0.173);
+            transition: 0.3s ease-in-out;
+            font-family: 'Be Vietnam Pro';
+         }
+         .subject-list-item:hover{
+            box-shadow: none;
+            transform: scale(1.02);
+         }
+         .subject-list-item span{
+            font-weight: 600;
+            color: #DCE0F5;
+         }
+         @media(max-width: 750px){
+            .subject-list-item{
+                font-size: 14px;
+                text-align: center;
+            }
+         }
+     </style>
+{% endblock %}

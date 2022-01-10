@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Students(models.Model):
 	username = models.CharField(max_length=255, unique=True)
 	fullname = models.CharField(max_length=255)
@@ -56,8 +55,8 @@ class Tutorials(models.Model):
 	subject = models.ForeignKey('Subjects', on_delete=models.CASCADE)
 	semester = models.ForeignKey('Semester', on_delete=models.CASCADE)
 	tutorial_number = models.CharField(max_length=255)
-	tutorial_question = models.CharField(max_length=500, blank=True) # PDF name for Tutorial Question
-	tutorial_solution = models.CharField(max_length=500) # PDF name for Tutorial Solution
+	tutorial_question = models.FileField(upload_to='tutorial_questions/', blank=True) # PDF name for Tutorial Question
+	tutorial_solution = models.FileField(upload_to='tutorial_solutions/') # PDF name for Tutorial Solution
 	author = models.CharField(max_length=255) # from admin data model
 	datetime = models.DateTimeField()
 
