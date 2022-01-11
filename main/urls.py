@@ -14,5 +14,6 @@ urlpatterns = [
     path('choose-subject/<semester>/', views.subjects),
     path('tutorials/<subject>/', views.tutorials),
     path('my-account/', views.my_account),
+    path('terms/', views.terms),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

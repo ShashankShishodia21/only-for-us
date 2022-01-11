@@ -64,7 +64,6 @@ class Tutorials(models.Model):
 		return f"{self.course}/{self.semester}/{self.subject}/{self.tutorial_number}"
 
 class Polls(models.Model):
-	poll_id = models.CharField(max_length=255, primary_key=True, unique=True)
 	poll_topic = models.CharField(max_length=500)
 	option_1 = models.CharField(max_length=500)
 	option_2 = models.CharField(max_length=500)
@@ -77,7 +76,7 @@ class Polls(models.Model):
 	author = models.CharField(max_length=255) # from admin data model
 
 	def __str__(self):
-		return f"{self.poll_id}({self.poll_topic})"
+		return f"({self.poll_topic})"
 
 class PollSubmitted(models.Model):
 	poll_id = models.CharField(max_length=255)

@@ -11,6 +11,9 @@ def index(request):
 	else:
 		return redirect('/login/')
 
+def terms(request):
+	return render(request, 'main/terms.html')
+
 def home(request):
 	if request.session.has_key('username'):
 		username = request.session['username']
