@@ -7,20 +7,30 @@
     {% include 'main/navbar.html' %}
     <section class="container">
         <h1>Tutorials</h1>
+        <p class="subject-name">{{subject}} <span>({{subject_code}})</span></p>
         <!-- code goes here -->
-        <div class="subjects-list-box">
-            <ul class="subject-list">
-                {% for tut in tutorials %}
-                <li><a href="" class="subject-list-item" title="Subject Code: {{sub.subject_code}}">{{tut.tutorial_number}}</a></li>
-                {% endfor %}
-            </ul>
+       <div class="tutorial-container">
+           <ul class="tutorial-list">
+               {% for tut in tutorials %}
+                <li class="tutorial-item-box"> 
+                    <p class="tutorial-block">Tutorial Number {{tut.tutorial_number}} Solution</p>
+                    <p class="solution-block"><a href="/media/{{tut.tutorial_solution}}" title="Download Tutorial {{tut.tutorial_number}} Solution" download><i class="las la-download"></i></a></p>
+                </li>
+               {% endfor %}
+           </ul>
+       </div>
+       {% if coming_soon %}
+        <div class="coming-soon">
+            <h1>Coming Soon</h1>
+            <p>We're working on it, please hold on!</p>
         </div>
+        {% endif %}
 
     </section>
      {% include 'main/footer.html' %}
      <style type="text/css">
          body{
-            background-color: #DCE0F5;
+            background-color: #ffffff;
          }
          .container{
             min-height: 100vh;
@@ -28,42 +38,41 @@
             margin: auto;
             margin-top: 80px;
             margin-bottom: 40px;
+            font-family: 'Be Vietnam Pro';
+            text-align: center;
          }
-         .subjects-list-box{
-            margin: 20px 0px;
+         .tutorial-container{
+            margin-top: 20px;
+            padding: 10px;
          }
-         .subject-list{
+         .tutorial-list{
             list-style: none;
          }
-         .subject-list li{
-         }
-         .subject-list-item{
+         .tutorial-item-box{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+            background: #5680E9;
             color: white;
-            width: 100%;
-            display: block;
+            padding: 8px 10px;
+            border-radius: 10px;
+         }
+         .solution-block a{
+            color: white;
             text-decoration: none;
-            margin-bottom: 18px;
-            padding: 10px 20px;
-            background: #8860D0;
-            border-radius: 5px;
-            font-size: 18px;
-            box-shadow: 10px 10px 10px rgba(0,0,0,0.173);
-            transition: 0.3s ease-in-out;
-            font-family: 'Be Vietnam Pro';
+            font-size: 22px;
          }
-         .subject-list-item:hover{
-            box-shadow: none;
-            transform: scale(1.02);
+         .coming-soon{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+            min-height: 50vh;
          }
-         .subject-list-item span{
-            font-weight: 600;
-            color: #DCE0F5;
-         }
-         @media(max-width: 750px){
-            .subject-list-item{
-                font-size: 14px;
-                text-align: center;
-            }
+         .coming-soon h1{
+            color: #8860D0;
          }
      </style>
 {% endblock %}

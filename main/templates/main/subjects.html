@@ -7,6 +7,7 @@
     {% include 'main/navbar.html' %}
     <section class="container">
         <h1>Select Subject</h1>
+        <p>Semester: {{semester}}</p>
         <!-- code goes here -->
         <div class="subjects-list-box">
             <ul class="subject-list">
@@ -15,6 +16,12 @@
                 {% endfor %}
             </ul>
         </div>
+        {% if coming_soon %}
+        <div class="coming-soon">
+            <h1>Coming Soon</h1>
+            <p>We're working on it, please hold on!</p>
+        </div>
+        {% endif %}
 
     </section>
      {% include 'main/footer.html' %}
@@ -58,6 +65,17 @@
          .subject-list-item span{
             font-weight: 600;
             color: #DCE0F5;
+         }
+         .coming-soon{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+            min-height: 50vh;
+         }
+         .coming-soon h1{
+            color: #8860D0;
          }
          @media(max-width: 750px){
             .subject-list-item{

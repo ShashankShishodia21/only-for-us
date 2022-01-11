@@ -6,7 +6,10 @@ from datetime import datetime
 from django.contrib.auth.hashers import make_password, check_password
 
 def index(request):
-	return HttpResponse("Hello world")
+	if request.session.has_key('username'):
+		return redirect('/home/')
+	else:
+		return redirect('/login/')
 
 def home(request):
 	if request.session.has_key('username'):
@@ -65,9 +68,14 @@ def subjects(request, semester):
 		username = request.session['username']
 		semester_instance = Semester.objects.get(semester_number=semester)
 		subjects = Subjects.objects.filter(semester=semester_instance).all()
+		coming_soon = False
+		if len(subjects) == 0:
+			coming_soon = True
 		data = {
 			'username': username,
 			'subjects': subjects,
+			'semester': semester,
+			'coming_soon': coming_soon,
 		}
 		return render(request, 'main/subjects.html', data)
 	else:
@@ -78,9 +86,15 @@ def tutorials(request, subject):
 		username = request.session['username']
 		subject_instance = Subjects.objects.get(subject_code=subject)
 		all_tutorials = Tutorials.objects.filter(subject=subject_instance).all()
+		coming_soon = False
+		if len(all_tutorials) == 0:
+			coming_soon = True
 		data = {
 			'username': username,
 			'tutorials': all_tutorials,
+			'subject': subject_instance.subject_name,
+			'subject_code': subject,
+			'coming_soon': coming_soon,
 		}
 		return render(request, 'main/tutorials.html', data)
 	else:
