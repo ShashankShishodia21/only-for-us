@@ -230,3 +230,12 @@ def logout(request):
 		except:
 			pass
 	return redirect('/')
+
+
+def error_404(request, exception):
+	data = {}
+	return render(request, 'main/404.html', data)
+
+def error_500(request):
+	data = {}
+	return render(request, 'main/500.html', data)
