@@ -32,6 +32,13 @@
         </div>
     </div>
 </div>
+<div class="poll-intro-section">
+    <h1 class="poll-intro-header">Voting Polls</h1>
+    <p class="poll-intro-text">
+       Different Opinion Polls and Votings are also active, which requires you opinion, and also gives you a chance to stand your voice. These all Polls are exclusivey running realted to your college, Studies, Environment, requirements and all the other interesting stuff.
+    </p>
+    <a href="/polls/" class="poll-action-btn">Participate Now</a>
+</div>
 {% include 'main/footer.html' %}
 <style>
     .flex {
@@ -205,6 +212,35 @@
         background-color: transparent;
         color: #5680E9;
         border: 2px solid #5680E9;
+    }
+    .poll-intro-section{
+        min-height: 50vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: #DCE0F5;
+        padding: 20px 50px;
+    }
+    .poll-intro-header{
+        margin-bottom: 20px;
+    }
+    .poll-intro-text{
+        margin: 0px 20px;
+    }
+    .poll-action-btn{
+        background: #5680E9;
+        margin-top: 20px;
+        padding: 6px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        color: white;
+    }
+    @media(max-width: 450px){
+        .poll-intro-section{
+            padding: 20px 10px;
+        }
     }
     @media screen and (max-width: 1600px) {
         .image-container img {

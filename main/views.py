@@ -35,12 +35,9 @@ def polls(request):
 		submitted_by_user = []
 		all_submitted_polls = PollSubmitted.objects.all()
 		for polls in all_submitted_polls:
-			print(polls)
 			if polls.username == Students.objects.get(username=username):
-				print(f"POLL ID : {polls.poll_id}")
 				submitted_by_user.append(int(polls.poll_id))
 
-		print(f"Submitted by user {submitted_by_user}")
 		available_polls = []
 		all_polls = Polls.objects.order_by('-datetime')
 		for polls in all_polls:
@@ -77,7 +74,6 @@ def poll_voting(request, poll_id, poll_topic):
 
 		if request.method == 'POST':
 			poll_choice = request.POST['poll_choice']
-			print(poll_choice)
 
 			username_instance = Students.objects.get(username=username)
 			submit_poll = PollSubmitted(
@@ -87,7 +83,6 @@ def poll_voting(request, poll_id, poll_topic):
 							option_selected=poll_choice,
 							datetime=datetime.now(),
 						)
-			print("Poll Submitted!!")
 
 			submit_poll.save()
 
@@ -105,8 +100,6 @@ def poll_voting(request, poll_id, poll_topic):
 						option_scores[3] += 1
 			max_score = max(option_scores)
 
-			print(option_scores)
-			print(max_score)
 			leading_option_text = ""
 
 			if max_score != 0:
@@ -218,7 +211,6 @@ def login(request):
 			find_user = None
 
 		if find_user != None and check_password(password, user_password):
-			print("user logged in")
 			request.session['username'] = find_user.username
 			return redirect('/home/')
 
@@ -315,7 +307,6 @@ def register(request):
 									course_year=course_year,
 									)
 		registering_user.save()
-		print("user registered!!")
 		request.session['username'] = username
 		return redirect('/home/')
 	return render(request, 'main/register.html')
