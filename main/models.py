@@ -10,6 +10,7 @@ class Students(models.Model):
 	datetime = models.DateTimeField()
 	password = models.CharField(max_length=255)
 	course_year = models.CharField(max_length=255)
+	admin = models.BooleanField(default=False)
 
 	def __str__(self):
 		return self.username
@@ -76,7 +77,7 @@ class Polls(models.Model):
 	author = models.CharField(max_length=255) # from admin data model
 
 	def __str__(self):
-		return f"({self.poll_topic})"
+		return f"{self.poll_topic}"
 
 class PollSubmitted(models.Model):
 	poll_id = models.CharField(max_length=255)
@@ -86,7 +87,7 @@ class PollSubmitted(models.Model):
 	datetime = models.DateTimeField()
 
 	def __str__(self):
-		return f"{self.username} => {self.poll_topic}"
+		return f"{self.username} => {self.poll_topic} => {self.option_selected}"
 
 class ContactQueries(models.Model):
 	name = models.CharField(max_length=255)

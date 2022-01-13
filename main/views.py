@@ -28,6 +28,106 @@ def home(request):
 	else:
 		return redirect('/login/')
 
+def polls(request):
+	if request.session.has_key('username'):
+		username = request.session['username']
+
+		submitted_by_user = []
+		all_submitted_polls = PollSubmitted.objects.all()
+		for polls in all_submitted_polls:
+			print(polls)
+			if polls.username == Students.objects.get(username=username):
+				print(f"POLL ID : {polls.poll_id}")
+				submitted_by_user.append(int(polls.poll_id))
+
+		print(f"Submitted by user {submitted_by_user}")
+		available_polls = []
+		all_polls = Polls.objects.order_by('-datetime')
+		for polls in all_polls:
+			if polls.id not in submitted_by_user:
+				available_polls.append(polls)
+
+		no_of_polls = len(available_polls)
+
+		data = {
+			'username': username,
+			'all_polls': available_polls,
+			'no_of_polls': no_of_polls,
+		}
+		return render(request, 'main/polls.html', data)
+	else:
+		return redirect('/login/')
+		
+
+def poll_voting(request, poll_id, poll_topic):
+	if request.session.has_key('username'):
+		username = request.session['username']
+		try:
+			poll_to_vote = Polls.objects.get(id=poll_id)
+		except:
+			return redirect('/polls/')
+		all_submitted_polls = PollSubmitted.objects.all()
+		for submit_poll in all_submitted_polls:
+			if submit_poll.username == Students.objects.get(username=username) and submit_poll.poll_topic == poll_to_vote.poll_topic:
+				return redirect('/polls/')
+		data = {
+			'username': username,
+			'poll_to_vote': poll_to_vote,
+		}
+
+		if request.method == 'POST':
+			poll_choice = request.POST['poll_choice']
+			print(poll_choice)
+
+			username_instance = Students.objects.get(username=username)
+			submit_poll = PollSubmitted(
+							poll_id=poll_id,
+							poll_topic=poll_topic,
+							username=username_instance,
+							option_selected=poll_choice,
+							datetime=datetime.now(),
+						)
+			print("Poll Submitted!!")
+
+			submit_poll.save()
+
+			poll_to_vote.submitted = str(int(poll_to_vote.submitted)+1)
+			option_scores = [0,0,0,0]
+			for submit_poll in all_submitted_polls:
+				if submit_poll.poll_topic == poll_topic:
+					if submit_poll.option_selected == poll_to_vote.option_1:
+						option_scores[0] += 1
+					elif submit_poll.option_selected == poll_to_vote.option_2:
+						option_scores[1] += 1
+					elif submit_poll.option_selected == poll_to_vote.option_3:
+						option_scores[2] += 1
+					elif submit_poll.option_selected == poll_to_vote.option_4:
+						option_scores[3] += 1
+			max_score = max(option_scores)
+
+			print(option_scores)
+			print(max_score)
+			leading_option_text = ""
+
+			if max_score != 0:
+				if option_scores[0] == max_score:
+					leading_option_text += f"{poll_to_vote.option_1} / "
+				if option_scores[1] == max_score:
+					leading_option_text += f"{poll_to_vote.option_2} / "
+				if option_scores[2] == max_score:
+					leading_option_text += f"{poll_to_vote.option_3} / "
+				if option_scores[3] == max_score:
+					leading_option_text += f"{poll_to_vote.option_4} / "
+
+			poll_to_vote.leading_option = leading_option_text
+
+			poll_to_vote.save()
+			return redirect('/polls/')
+
+		return render(request, 'main/poll_voting.html', data)
+	else:
+		return redirect('/login/')
+
 def my_account(request):
 	if request.session.has_key('username'):
 		username = request.session['username']
@@ -203,7 +303,6 @@ def register(request):
 			return render(request, 'main/register.html', data)
 
 		encrypted_password = make_password(password)
-
 		registering_user = Students(
 									username=username,
 									email=email,

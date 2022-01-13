@@ -11,11 +11,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
         {% block head %}{% endblock %}
-        <title>
-            {% block title %}
-
-            {% endblock %}
-        </title>
+        <title>{% block title %}{% endblock %}</title>
     </head>
     <body>
         {% block body %}
@@ -32,10 +28,7 @@
         }
         body{
             font-family: 'Poppins';
-            /*font-family: 'Be Vietnam Pro';*/
             font-weight: 400;
         }
-
-
     </style>
 </html>

@@ -13,7 +13,9 @@ urlpatterns = [
     path('choose-semester/', views.semesters),
     path('choose-subject/<semester>/', views.subjects),
     path('tutorials/<subject>/', views.tutorials),
+    path('polls/', views.polls),
     path('my-account/', views.my_account),
     path('terms/', views.terms),
+    path('poll-voting/<poll_id>/<poll_topic>/', views.poll_voting),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
