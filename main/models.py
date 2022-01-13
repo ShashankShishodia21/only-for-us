@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Students(models.Model):
 	username = models.CharField(max_length=255, unique=True)
 	fullname = models.CharField(max_length=255)
@@ -11,6 +10,7 @@ class Students(models.Model):
 	datetime = models.DateTimeField()
 	password = models.CharField(max_length=255)
 	course_year = models.CharField(max_length=255)
+	admin = models.BooleanField(default=False)
 
 	def __str__(self):
 		return self.username
@@ -56,8 +56,8 @@ class Tutorials(models.Model):
 	subject = models.ForeignKey('Subjects', on_delete=models.CASCADE)
 	semester = models.ForeignKey('Semester', on_delete=models.CASCADE)
 	tutorial_number = models.CharField(max_length=255)
-	tutorial_question = models.CharField(max_length=500, blank=True) # PDF name for Tutorial Question
-	tutorial_solution = models.CharField(max_length=500) # PDF name for Tutorial Solution
+	tutorial_question = models.FileField(upload_to='tutorial_questions/', blank=True) # PDF name for Tutorial Question
+	tutorial_solution = models.FileField(upload_to='tutorial_solutions/') # PDF name for Tutorial Solution
 	author = models.CharField(max_length=255) # from admin data model
 	datetime = models.DateTimeField()
 
@@ -65,7 +65,6 @@ class Tutorials(models.Model):
 		return f"{self.course}/{self.semester}/{self.subject}/{self.tutorial_number}"
 
 class Polls(models.Model):
-	poll_id = models.CharField(max_length=255, primary_key=True, unique=True)
 	poll_topic = models.CharField(max_length=500)
 	option_1 = models.CharField(max_length=500)
 	option_2 = models.CharField(max_length=500)
@@ -78,7 +77,7 @@ class Polls(models.Model):
 	author = models.CharField(max_length=255) # from admin data model
 
 	def __str__(self):
-		return f"{self.poll_id}({self.poll_topic})"
+		return f"{self.poll_topic}"
 
 class PollSubmitted(models.Model):
 	poll_id = models.CharField(max_length=255)
@@ -88,7 +87,7 @@ class PollSubmitted(models.Model):
 	datetime = models.DateTimeField()
 
 	def __str__(self):
-		return f"{self.username} => {self.poll_topic}"
+		return f"{self.username} => {self.poll_topic} => {self.option_selected}"
 
 class ContactQueries(models.Model):
 	name = models.CharField(max_length=255)

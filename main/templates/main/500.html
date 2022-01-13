@@ -1,0 +1,52 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block head %}
+{% endblock %}
+{% block title %}500 Internal Server Error{% endblock %}
+{% block body %}
+    <section class="container">
+        <h1>500</h1>
+        <h3>Internal Server Error</h3>
+        <a href="/" class="back-btn">Back</a>
+        
+    </section>
+     {% include 'main/footer.html' %}
+     <style type="text/css">
+         body{
+            background-color: rgb(20,20,20);
+            color: white;
+         }
+         .container{
+            min-height: 100vh;
+            width: 95%;
+            margin: auto;
+            margin-bottom: 40px;
+            font-family: 'Be Vietnam Pro';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+         }
+         .container h1{
+            font-size: 140px;   
+            color: black; 
+            text-shadow: -3px -3px 0 crimson, 3px -3px 0 crimson, -3px 3px 0 rgb(0,180,255), 3px 3px 0 rgb(0,180,255);
+
+         }
+         .container h3{
+            margin-bottom: 10px;
+            color: gray;
+         }
+         .back-btn{
+            text-decoration: none;
+            background: black;
+            color: white;
+            padding: 6px 18px;
+            border-radius: 5px;
+            margin-top: 10px;       
+            box-shadow: -3px -3px 0 crimson, 3px -3px 0 crimson, -3px 3px 0 rgb(0,180,255), 3px 3px 0 rgb(0,180,255);
+
+         }
+        
+     </style>
+{% endblock %}

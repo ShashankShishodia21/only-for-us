@@ -1,0 +1,78 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block head %}
+{% endblock %}
+{% block title %}Tutorials | OnlyForUs{% endblock %}
+{% block body %}
+    {% include 'main/navbar.html' %}
+    <section class="container">
+        <h1>Tutorials</h1>
+        <p class="subject-name">{{subject}} <span>({{subject_code}})</span></p>
+        <!-- code goes here -->
+       <div class="tutorial-container">
+           <ul class="tutorial-list">
+               {% for tut in tutorials %}
+                <li class="tutorial-item-box"> 
+                    <p class="tutorial-block">Tutorial Number {{tut.tutorial_number}} Solution</p>
+                    <p class="solution-block"><a href="/media/{{tut.tutorial_solution}}" title="Download Tutorial {{tut.tutorial_number}} Solution" download><i class="las la-download"></i></a></p>
+                </li>
+               {% endfor %}
+           </ul>
+       </div>
+       {% if coming_soon %}
+        <div class="coming-soon">
+            <h1>Coming Soon</h1>
+            <p>We're working on it, please hold on!</p>
+        </div>
+        {% endif %}
+
+    </section>
+     {% include 'main/footer.html' %}
+     <style type="text/css">
+         body{
+            background-color: #ffffff;
+         }
+         .container{
+            min-height: 100vh;
+            width: 90%;
+            margin: auto;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            font-family: 'Be Vietnam Pro';
+            text-align: center;
+         }
+         .tutorial-container{
+            margin-top: 20px;
+            padding: 10px;
+         }
+         .tutorial-list{
+            list-style: none;
+         }
+         .tutorial-item-box{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+            background: #5680E9;
+            color: white;
+            padding: 8px 10px;
+            border-radius: 10px;
+         }
+         .solution-block a{
+            color: white;
+            text-decoration: none;
+            font-size: 22px;
+         }
+         .coming-soon{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+            min-height: 50vh;
+         }
+         .coming-soon h1{
+            color: #8860D0;
+         }
+     </style>
+{% endblock %}

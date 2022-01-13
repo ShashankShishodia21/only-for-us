@@ -1,0 +1,87 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block head %}
+{% endblock %}
+{% block title %}Select Subject | OnlyForUs{% endblock %}
+{% block body %}
+    {% include 'main/navbar.html' %}
+    <section class="container">
+        <h1>Select Subject</h1>
+        <p>Semester: {{semester}}</p>
+        <!-- code goes here -->
+        <div class="subjects-list-box">
+            <ul class="subject-list">
+                {% for sub in subjects %}
+                <li><a href="/tutorials/{{sub.subject_code}}/" class="subject-list-item" title="Subject Code: {{sub.subject_code}}">{{sub.subject_name}} <span>({{sub.subject_code}})</span></a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% if coming_soon %}
+        <div class="coming-soon">
+            <h1>Coming Soon</h1>
+            <p>We're working on it, please hold on!</p>
+        </div>
+        {% endif %}
+
+    </section>
+     {% include 'main/footer.html' %}
+     <style type="text/css">
+         body{
+            background-color: #DCE0F5;
+         }
+         .container{
+            min-height: 100vh;
+            width: 90%;
+            margin: auto;
+            margin-top: 80px;
+            margin-bottom: 40px;
+         }
+         .subjects-list-box{
+            margin: 20px 0px;
+         }
+         .subject-list{
+            list-style: none;
+         }
+         .subject-list li{
+         }
+         .subject-list-item{
+            color: white;
+            width: 100%;
+            display: block;
+            text-decoration: none;
+            margin-bottom: 18px;
+            padding: 10px 20px;
+            background: #8860D0;
+            border-radius: 5px;
+            font-size: 18px;
+            box-shadow: 10px 10px 10px rgba(0,0,0,0.173);
+            transition: 0.3s ease-in-out;
+            font-family: 'Be Vietnam Pro';
+         }
+         .subject-list-item:hover{
+            box-shadow: none;
+            transform: scale(1.02);
+         }
+         .subject-list-item span{
+            font-weight: 600;
+            color: #DCE0F5;
+         }
+         .coming-soon{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+            min-height: 50vh;
+         }
+         .coming-soon h1{
+            color: #8860D0;
+         }
+         @media(max-width: 750px){
+            .subject-list-item{
+                font-size: 14px;
+                text-align: center;
+            }
+         }
+     </style>
+{% endblock %}

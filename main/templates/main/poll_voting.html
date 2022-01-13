@@ -1,0 +1,85 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block head %}
+{% endblock %}
+{% block title %}{{poll_to_vote.poll_topic}} | OnlyForUs{% endblock %}
+{% block body %}
+    {% include 'main/navbar.html' %}<br><br>
+    <section class="container">
+        <h1>Vote Poll</h1>
+        <br><hr>
+        <div class="poll-vote-container">
+            <h3 class="poll-topic-header">{{poll_to_vote.poll_topic}}</h3>
+            <p class="closing-date">Closing on <span>{{poll_to_vote.end_datetime}}</span></p>
+            <form class="poll-vote-form" action="/poll-voting/{{poll_to_vote.id}}/{{poll_to_vote.poll_topic}}/" method="POST">
+                {% csrf_token %}
+                <input type="radio" name="poll_choice" id="{{poll_to_vote.option_1}}" value="{{poll_to_vote.option_1}}" required>
+                <label for="{{poll_to_vote.option_1}}">{{poll_to_vote.option_1}}</label><br>
+                <input type="radio" name="poll_choice" id="{{poll_to_vote.option_2}}" value="{{poll_to_vote.option_2}}" required>
+                <label for="{{poll_to_vote.option_2}}">{{poll_to_vote.option_2}}</label><br>    
+                {% if poll_to_vote.option_3 != "" %}
+                <input type="radio" name="poll_choice" id="{{poll_to_vote.option_3}}" value="{{poll_to_vote.option_3}}" required>
+                <label for="{{poll_to_vote.option_3}}">{{poll_to_vote.option_3}}</label><br>   
+                {% endif %}
+                {% if poll_to_vote.option_4 != "" %}
+                <input type="radio" name="poll_choice" id="{{poll_to_vote.option_4}}" value="{{poll_to_vote.option_4}}" required>
+                <label for="{{poll_to_vote.option_4}}">{{poll_to_vote.option_4}}</label><br>   
+                {% endif %}
+                <input type="submit" class="submit-btn" value="Vote">
+            </form>
+        </div>
+        
+    </section>
+    {% include 'main/footer.html' %}
+    <style type="text/css">
+        .container{
+            width: 90%;
+            min-height: 90vh;
+            margin: auto;
+            margin-top: 20px;
+        }
+        .poll-vote-container{
+            margin: 20px 0px;
+            padding: 20px;
+            border-radius: 10px;
+            background: linear-gradient(45deg, rgb(10,10,10), rgb(45,45,45));
+            color: white;
+        }
+        .poll-topic-header{
+            font-size: 28px;
+            margin-bottom: 8px;
+            color: rgba(0,180,255);
+        }
+        .closing-date{
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: gray;
+        }
+        .closing-date span{
+            color: rgb(200,200,200);
+            font-size: 14px;
+
+        }
+        .poll-vote-form input{
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        .submit-btn{
+            padding: 5px 30px;
+            margin-top: 16px;
+            border: none;
+            background: rgb(220,220,220);
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: 'Poppins';
+            font-weight: 600;
+        }
+        @media(max-width: 450px){
+            .poll-topic-header{
+                font-size: 24px;
+            }
+        }
+        
+    </style>
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block head %}
+{% endblock %}
+{% block title %}Polls | OnlyForUs{% endblock %}
+{% block body %}
+    {% include 'main/navbar.html' %}<br><br>
+    <section class="container">
+        <h1>Active Polls</h1>
+        <br><hr>
+        <div class="polls-container">
+            <ul class="polls-list">
+                {% for poll in all_polls %}
+                <a href="/poll-voting/{{poll.id}}/{{poll.poll_topic}}/">
+                <li ><a href="/poll-voting/{{poll.id}}/{{poll.poll_topic}}/" class="polls-list-item">{{poll.poll_topic}}</a></li>
+                </a>
+                {% endfor %}
+            </ul>
+
+            {% if no_of_polls == 0 %}
+                <div class="no-polls-container">
+                    <span> &#128516;</span>
+                    <h3>No Active Polls</h3>
+                    <p>Currently, no polls are available, or you've already participated in all</p>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+    {% include 'main/footer.html' %}
+    <style type="text/css">
+        .container{
+            width: 90%;
+            min-height: 90vh;
+            margin: auto;
+            margin-top: 20px;
+            /*font-family: 'Be Vietnam Pro';*/
+        }
+        .polls-container{
+            padding: 20px 0px;
+            margin-top: 10px;
+        }
+        .polls-list{
+            list-style: none;
+        }
+        .polls-list-item{
+            margin-bottom: 14px;
+            padding: 10px 18px;
+            background: linear-gradient(to left, #5ab9ea, #5680E9);
+            display: block;
+            border-radius: 10px;
+            transition: .3s ease-in;
+            box-shadow: -6px -6px 2px rgba(0,0,0,0.4);
+            color: white;
+            font-size: 16px;
+            text-decoration: none;
+        }
+        .polls-list-item a{
+            color: white;
+            font-size: 16px;
+            text-decoration: none;
+        }
+        .poll-list-item-datetime{
+            color: white;
+            font-size: 14px;
+            float: right;
+        }
+        .polls-list-item:hover{
+            box-shadow: -6px -6px 12px rgba(0,0,0,0.4);
+        }
+        .no-polls-container{
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            margin-top: 40px;
+            text-align: center;
+        }
+        .no-polls-container h3{
+            font-size: 28px;
+            margin-bottom: 6px;
+        }
+        .no-polls-container p{
+            font-size: 15px;
+        }
+        .no-polls-container span{
+            font-size: 28px;
+        }
+        @media(max-width: 450px){
+            .container{
+                width: 90%;
+            }
+            .polls-list-item{
+                .font-size: 13px;
+                padding: 6px 8px;
+                border-radius: 5px;
+                margin-bottom: 16px;
+                box-shadow: -2px -2px 2px rgba(0,0,0,0.4);
+            }
+        }
+    </style>
+{% endblock %}

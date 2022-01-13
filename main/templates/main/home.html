@@ -1,18 +1,9 @@
 {% extends 'main/base.html' %}
 {% load static %}
-
-{% block head %}
-
-{% endblock %}
-
 {% block title %}Home | OnlyForUs{% endblock %}
-
 {% block body %}
 {% include 'main/navbar.html' %}
-
-
 <div class="about-container">
-
     <div class="text-container">
         <br>
         <h1>OnlyForUs</h1>
@@ -24,7 +15,6 @@
     <div class="image-container">
         <img src="{% static 'main/images/hero-group.png' %}" alt="My image">
     </div>
-
 </div>
 <div class="TutorialAndSem flex">
     <h1>What we Provide </h1>
@@ -32,33 +22,33 @@
     <div class="container flex">
         <div class="tutorial flex">
             <img src="{% static 'main/images/notebook.png' %}" alt="My image">
-            <h2>Tutorial</h2>
+            <h2>Tutorials</h2>
             <p>{{no_of_tutorials}}</p>
-
         </div>
-
         <div class="semester flex">
             <img src="{% static 'main/images/semester.png' %}" alt="My image">
             <h2>Semesters</h2>
             <p>{{no_of_semesters}}</p>
-
         </div>
     </div>
 </div>
-
+<div class="poll-intro-section">
+    <h1 class="poll-intro-header">Voting Polls</h1>
+    <p class="poll-intro-text">
+       Different Opinion Polls and Votings are also active, which requires you opinion, and also gives you a chance to stand your voice. These all Polls are exclusivey running realted to your college, Studies, Environment, requirements and all the other interesting stuff.
+    </p>
+    <a href="/polls/" class="poll-action-btn">Participate Now</a>
+</div>
 {% include 'main/footer.html' %}
-
 <style>
     .flex {
         display: flex;
         justify-content: center;
         align-items: center;
     }
-
     .container {
         width: 100%;
     }
-
     .TutorialAndSem {
         flex-direction: column;
         width: 100%;
@@ -66,140 +56,108 @@
         padding: 20px;
         text-align: center;
     }
-
     .TutorialAndSem h1 {
         padding-top: 100px;
         padding-bottom: 20px;
         font-size: 50px;
-
     }
-
     .TutorialAndSem p {
         padding-top: 20px;
         padding-bottom: 40px;
         font-size: 30px;
     }
-
     .semester,
     .tutorial {
         flex-direction: column;
     }
-
     .semester {
         flex: 1;
     }
-
     .tutorial {
         flex: 1;
     }
-
     .tutorial img,
     .semester img {
         width: 20%;
         height: auto;
         object-fit: cover;
     }
-
     .tutorial h1,
     .semester h1 {
         font-size: 50px;
         font-weight: 600;
         padding-top: 20px;
     }
-
     .tutorial p,
     .semester p {
         font-size: 40px;
         font-weight: 800;
         padding: 0px;
     }
-
     @media screen and (max-width: 1400px) {
-
         .tutorial h1,
         .semester h1 {
             font-size: 40px;
         }
-
         .tutorial p,
         .semester p {
             font-size: 25px;
         }
-
         .TutorialAndSem h1 {
             font-size: 40px;
-
         }
-
         .TutorialAndSem p {
             font-size: 20px;
         }
-
     }
-
     @media screen and (max-width: 850px) {
         .TutorialAndSem h1 {
             font-size: 30px;
             padding-top: 20px;
             padding-bottom: 20px;
-
         }
-
         .tutorial h1,
         .semester h1 {
             font-size: 30px;
             padding-top: 0px;
             padding-bottom: 0px;
         }
-
         .tutorial p,
         .semester p {
             font-size: 25px;
             padding-top: 0px;
             padding-bottom: 0px;
         }
-
         .TutorialAndSem p {
             font-size: 20px;
         }
-
     }
-
     @media screen and (max-width: 500px) {
         .container {
             flex-direction: column;
         }
-
         .TutorialAndSem h1 {
             font-size: 25px;
             padding-top: 20px;
             padding-bottom: 20px;
-
         }
-
         .tutorial h1,
         .semester h1 {
             font-size: 30px;
             padding: 0px 0px;
-
         }
-
         .tutorial {
             margin: 25px 0px;
         }
-
         .tutorial p,
         .semester p {
             font-size: 25px;
             padding-top: 0px;
         }
-
         .TutorialAndSem p {
             font-size: 18px;
         }
-
     }
-
     .about-container {
         width: 100%;
         min-height: 60vh;
@@ -212,7 +170,6 @@
         overflow: hidden;
         color: #5680E9;
     }
-
     .image-container {
         flex: 1;
         display: flex;
@@ -220,7 +177,6 @@
         align-items: center;
         position: relative;
     }
-
     .image-container img {
         position: absolute;
         width: 100%;
@@ -229,7 +185,6 @@
         margin: 200px 20px 20px 20px;
         border-radius: 10px;
     }
-
     .text-container {
         flex: 1;
         display: flex;
@@ -239,12 +194,10 @@
         font-size: 22px;
         padding: 0px 20px;
     }
-
     .text-container h1 {
         font-size: 70px;
         padding: 20px 0px;
     }
-
     .text-container a {
         text-decoration: none;
         padding: 12px;
@@ -255,40 +208,60 @@
         border-radius: 5px;
         transition: .3s all ease;
     }
-
     .text-container a:hover {
         background-color: transparent;
         color: #5680E9;
         border: 2px solid #5680E9;
     }
-
+    .poll-intro-section{
+        min-height: 50vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: #DCE0F5;
+        padding: 20px 50px;
+    }
+    .poll-intro-header{
+        margin-bottom: 20px;
+    }
+    .poll-intro-text{
+        margin: 0px 20px;
+    }
+    .poll-action-btn{
+        background: #5680E9;
+        margin-top: 20px;
+        padding: 6px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        color: white;
+    }
+    @media(max-width: 450px){
+        .poll-intro-section{
+            padding: 20px 10px;
+        }
+    }
     @media screen and (max-width: 1600px) {
         .image-container img {
             margin: 200px 20px 20px 20px;
         }
-
         .about-container {
             min-height: 40vh;
         }
     }
-
     @media screen and (max-width: 1370px) {
         .text-container h1 {
             font-size: 50px;
-
         }
-
         .about-container p {
             font-size: 18px;
         }
-
         .text-container a {
             padding: 10px;
             font-size: 18px;
         }
-
     }
-
     @media screen and (max-width: 1100px) {
         .about-container {
             flex-direction: column;
@@ -298,7 +271,6 @@
             overflow: hidden;
             text-align: center;
         }
-
         .image-container {
             width: 100%;
             z-index: 678;
@@ -314,7 +286,6 @@
             align-items: center;
         }
     }
-
     @media screen and (max-width: 650px) {
         .about-container {
             min-height: 50vh;
@@ -324,7 +295,6 @@
             padding-bottom: 100px;
         }
     }
-
     @media screen and (max-width: 500px) {
         .about-container {
             min-height: 40vh;
