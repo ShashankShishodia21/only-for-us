@@ -75,6 +75,7 @@ class Polls(models.Model):
 	datetime = models.DateTimeField()
 	end_datetime = models.DateTimeField()
 	author = models.CharField(max_length=255) # from admin data model
+	active = models.BooleanField(default=True)
 
 	def __str__(self):
 		return f"{self.poll_topic}"

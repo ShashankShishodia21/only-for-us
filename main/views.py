@@ -41,7 +41,7 @@ def polls(request):
 		available_polls = []
 		all_polls = Polls.objects.order_by('-datetime')
 		for polls in all_polls:
-			if polls.id not in submitted_by_user:
+			if polls.id not in submitted_by_user and polls.active:
 				available_polls.append(polls)
 
 		no_of_polls = len(available_polls)
@@ -54,7 +54,7 @@ def polls(request):
 		return render(request, 'main/polls.html', data)
 	else:
 		return redirect('/login/')
-		
+
 
 def poll_voting(request, poll_id, poll_topic):
 	if request.session.has_key('username'):
@@ -65,7 +65,7 @@ def poll_voting(request, poll_id, poll_topic):
 			return redirect('/polls/')
 		all_submitted_polls = PollSubmitted.objects.all()
 		for submit_poll in all_submitted_polls:
-			if submit_poll.username == Students.objects.get(username=username) and submit_poll.poll_topic == poll_to_vote.poll_topic:
+			if submit_poll.username == Students.objects.get(username=username) and submit_poll.poll_topic == poll_to_vote.poll_topic or poll_to_vote.active == False:
 				return redirect('/polls/')
 		data = {
 			'username': username,
